@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
 public class AnswerController : MonoBehaviour
 {
+    public TMPro.TextMeshProUGUI headerText;
     public TMPro.TextMeshProUGUI answerText;
     private int maxLen = 6;
     public GameObject HintText;
@@ -55,6 +57,11 @@ public class AnswerController : MonoBehaviour
             Debug.Log("wrong");
         }
     }
+    
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     private void FinishLevel()
     {
@@ -66,6 +73,7 @@ public class AnswerController : MonoBehaviour
     public void ChangeCorrectAnswer(string ans)
     {
         answer = ans;
+        headerText.SetText(currentLevel.Index.ToString());
     }
 
     private void SkipLevel(int id)

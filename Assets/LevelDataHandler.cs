@@ -23,8 +23,14 @@ public class LevelDataHandler : MonoBehaviour
 
     private int selectedLevelIndex = 0;
 
+    public void ContinueGame()
+    {
+        SelectLevel(PlayerPrefs.GetInt("LastLevel", 0));
+    }
+
     public void SelectLevel(int index) 
     {
+        PlayerPrefs.SetInt("LastLevel", index);
         selectedLevelIndex = index;
         selectedLevel = Levels[index];
         SceneManager.LoadScene(1);
